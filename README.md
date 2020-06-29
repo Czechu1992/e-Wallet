@@ -1,6 +1,6 @@
 # e-Wallet
 
-## Prosta Aplikacja finansowa w ramach ćwiczeń JavaScript, html-a i css-a
+## Prosta Aplikacja finansowa stworzona w ramach ćwiczeń JavaScript, html-a i css-a
 
 Podstawowe funkcje aplikacji:
 - Dodawanie transakcji (wydatku, przychodu)
@@ -14,4 +14,4 @@ Dodatkowe funkcję:
 - Możliwość wybrania stylu light/Dark
 - zerowanie całego portfela 
 
-Aplikacja nie jest responsywna (RWD) minimalna szerokość ekranu 1024px. Może kiedyś będzie ;-)
+Aplikacja nie jest responsywna (RWD) minimalna szerokość ekranu 1024px. Aplikacja nie posiada również backendu, po odświeżeniu traci się wszystkie dane! Może kiedyś będzie ;-)
