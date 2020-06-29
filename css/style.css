@@ -1,0 +1,475 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --first-color: #f9f9f9;
+    --second-color: #14161f;
+    --border-color: rgba(0, 0, 0, .2);
+    --bgc-radio1:rgb(221, 255, 221);
+    --bgc-radio2:rgb(255, 221, 221);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--second-color);
+    background-color: var(--first-color);
+}
+
+.wrapper {
+    max-width: 2560px;
+    min-width: 1024px;
+    margin: 0 auto;
+}
+
+.error {
+    border: 1px solid rgb(0, 137, 250);
+    background-color: rgba(0, 137, 250,.1);
+}
+
+/* HEADER *****************************************************************************/
+
+header {
+    display: flex;
+    flex-direction: row;
+    margin: 0px auto 40px;
+    align-items: center;
+    justify-content: space-between;
+    height: 15vh;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header .logo {
+    align-self: flex-start;
+    margin:10px 20px;
+}
+
+header h1 {
+    margin-bottom: 5px;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+header h1 i {
+    text-shadow: 3px 3px var(--border-color);
+}
+
+header .logo h1 .new-size {
+    font-size: 20px;
+    vertical-align: -3px;
+    /* border-bottom: 1px solid ; */
+}
+
+header .logo h1 .new-font {
+    font-family: 'Lobster', cursive;
+    text-shadow: 3px 3px var(--border-color);
+}
+
+header .logo p {
+    font-size: 14px;
+}
+
+header .money .title {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+header .money .available-money {
+    text-align: center;
+    font-size: 28px;
+}
+
+
+header .control-panel {
+    position: relative;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-right: 30px;
+    height: 100%;
+}
+
+.controls button {
+    padding: 8px 15px;
+    color: var(--second-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 18px;
+    background: none;
+    cursor: pointer;
+    transition: color .3s, background-color .3s;
+}
+
+.controls button:hover {
+    color: var(--first-color);
+    background-color: var(--second-color);
+}
+
+.add-button .add-transaction {
+    height: 82px;
+    color: var(--first-color);
+    background-color: var(--second-color);
+    transition: color .3s, background-color .3s;
+}
+
+.add-button .add-transaction:hover {
+    color: var(--second-color);
+    background-color: var(--first-color);
+}
+
+.controls i {
+    margin-right: 10px;
+}
+
+.add-button,
+.rest-buttons {
+    margin-right: 10px;
+}
+
+.rest-buttons {
+    display: flex;
+    flex-direction: column;
+    height: 26px;
+}
+
+.delete-all{
+    margin-bottom: 5px;
+}
+
+/* STYLE BUTTONS *******************************************************************************/
+
+.color-buttons {
+    display: flex;
+    position: absolute;
+    top: 89px;
+    left: 217px;
+    padding: 5px 25px;
+    background-color: var(--first-color);
+    border: 1px solid var(--border-color);
+    transition: opacity .5s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.popup-style {
+    visibility: visible;
+    opacity: 1;
+}
+
+.color-buttons button {
+    margin: 0 15px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.color-buttons button:hover {
+    transform: scale(.9);
+}
+
+.color-buttons .light {
+    background: #F9F9F9;
+    border: 1px solid #14161F;
+}
+
+.color-buttons .dark {
+    background: #14161F;
+    border: 1px solid #F9F9F9;
+}
+
+/* MAIN *************************************************************************************************/
+/* TRANSACTION LIST ***************************************************************************************/
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+
+h2.title {
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 200;
+}
+
+section.transactions {
+    flex-shrink: 5;
+    width: 45%;
+    height: 80vh;
+    margin: 0 30px;
+}
+
+.transaction-list-all {
+    display: flex;
+    border: 1px solid var(--border-color);
+    min-height: 80%;
+}
+
+
+.transactions h3 {
+    margin-bottom: 30px;
+    font-size: 28px;
+    text-align: center;
+}
+
+.transaction-list {
+    display: flex;
+}
+
+.all-transactions {
+    margin: 0 20px;
+    padding: 30px;
+    width: 100%;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.transaction:last-child {
+    border-bottom: none;
+}
+
+.transaction-name {
+    font-size: 18px;
+}
+
+.transaction-name i {
+    margin-right: 10px;
+}
+
+.delete {
+    margin-left: 10px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--second-color);
+    cursor: pointer;
+    transition: transform .3s, color .3s;
+}
+
+.delete:hover {
+    transform: scale(.8);
+    color: rgb(226, 34, 34);
+}
+
+/* ADITIONAL INFO, Info Bricks ******************************************************************** */
+section.additional-info {
+    width: 50%;
+    height: 80vh;
+}
+
+.all-right-section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.info-brick {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.info-brick-area {
+    margin: 0 20px 20px 20px;
+    padding: 20px 30px 30px;
+    width: 42%;
+    height: 20%;
+    border: 1px solid var(--border-color);
+}
+
+.info-brick-area h3 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.pos {
+    color: rgb(19, 200, 108);
+}
+
+.neg {
+    color: rgb(255, 104, 104);
+}
+
+.info-brick-text {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.info-brick-text.average {
+    justify-content: center;
+}
+
+
+/* ADD TRANSACTION ************************************************************************* */
+
+.add-transaction-panel {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 20px;
+    color: var(--second-color);
+    background-color: var(--first-color);
+    border: 1px solid var(--border-color);
+}
+
+.transaction-type {
+    margin: 10px;
+}
+
+.transaction-type input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+    
+}
+
+.transaction-type label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 20px;
+    background-color: var(--first-color);
+    font-family: sans-serif, Arial;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#label-income:hover {
+    background-color: rgb(50, 82, 50);
+    border-color: rgb(68, 204, 68);
+}
+
+#label-expenses:hover {
+    background-color: rgb(82, 50, 50);
+    border-color: rgb(204, 68, 68);
+}
+
+#label-income:hover {
+    background-color: var(--bgc-radio1);
+    border-color: rgb(68, 204, 68);
+}
+
+#label-expenses:hover {
+    background-color: var(--bgc-radio2);
+    border-color: rgb(204, 68, 68);
+}
+
+.transaction-type input[type="radio"]:focus+label {
+    border: 2px dashed var(--border-color);
+}
+
+#radio-income:checked+label {
+    background-color: rgb(19, 200, 108);
+    border-color: rgb(68, 204, 68);
+}
+
+#radio-expenses:checked+label {
+    background-color: rgb(255, 104, 104);
+    border-color: rgb(204, 68, 68);
+}
+
+.popup {
+    display: flex;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.add-transaction-panel h2.title {
+    margin-top: 25px;
+    margin-bottom: 0;
+    font-size: 27px;
+}
+
+.add-transaction-panel label {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+
+#label-expenses, #label-income {
+    font-size: 20px;
+}
+
+.add-transaction-panel small {
+    margin-bottom: 15px;
+    font-style: italic;
+    color: var(--second-color);
+}
+
+.add-transaction-panel input,
+.add-transaction-panel select {
+    width: 80%;
+}
+
+.add-transaction-panel input,
+.add-transaction-panel select,
+.add-transaction-panel button {
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.add-transaction-panel input,
+.add-transaction-panel select,
+.add-transaction-panel option {
+    font-size: 15px;
+}
+
+
+.add-transaction-panel .panel-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.add-transaction-panel button {
+    margin: 0 30px 25px 30px;
+    padding: 15px 40px;
+    font-size: 16px;
+    color: var(--second-color);
+    border: 1px solid var(--border-color);
+    background: none;
+    cursor: pointer;
+    transition: background-color .3s, color .3s;
+}
+
+.add-transaction-panel button:hover {
+    color: var(--first-color);
+    background-color: var(--second-color);
+}
+
+.panel-buttons .save {
+    color: var(--first-color);
+    background-color: var(--second-color);
+    transition: color .3s, background-color .3s;
+}
+
+.panel-buttons .save:hover {
+    color: var(--second-color);
+    background-color: var(--first-color);
+}
+
+
