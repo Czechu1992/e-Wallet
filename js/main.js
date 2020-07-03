@@ -138,7 +138,6 @@ const minTransaction = (arr, name) => {
     }
 }
 
-
 const createMaxTransaction = (arr, max, name) => {
     indexNumber = arr.indexOf(max)
 
@@ -337,6 +336,12 @@ const changeStyleToDark = () => {
     root.style.setProperty('--bgc-radio1', 'rgb(50, 82, 50)');
     root.style.setProperty('--bgc-radio2', 'rgb(82, 50, 50)');
 }
+
+function maxLengthCheck(object) {
+    console.log(object)
+    if (object.value.length > object.max.length)
+      object.value = object.value.slice(0, object.max.length)
+  }
 
 
 addTransactionBtn.addEventListener('click', popupTransactionPanel);

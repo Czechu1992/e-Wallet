@@ -142,7 +142,7 @@
                             <label for="amount">Kwota</label>
                             <small>(podaj kwotę transakcji)
                             </small>
-                            <input type="number" min="0" max="9" id="amount">
+                            <input type="number" min="0" max="9999999" id="amount" oninput="maxLengthCheck(this)">
 
                             <label for="category">Kategoria</label>
                             <small>(wybierz kategorie przychodu/wydatku)</small>
