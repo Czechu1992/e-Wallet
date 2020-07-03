@@ -290,6 +290,13 @@ section.additional-info {
     border: 1px solid var(--border-color);
 }
 
+.credit {
+width: 65%;
+border-radius: 5px;
+}
+
+
+
 .info-brick-area h3 {
     font-size: 18px;
     text-align: center;
@@ -313,6 +320,7 @@ section.additional-info {
 .info-brick-text.average {
     justify-content: center;
 }
+
 
 
 /* ADD TRANSACTION ************************************************************************* */
