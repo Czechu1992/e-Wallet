@@ -27,12 +27,13 @@ const cancelBtn = document.querySelector('.cancel');
 
 //Info-Brick
 const infoBrick = document.querySelector('.info-brick');
-const averageExpenses = document.querySelector('.average-expenses')
-const averageIncome = document.querySelector('.average-income')
-const maxExpenseTransactionBrick = document.querySelector('.max-expense-transaction')
-const maxIncomeTransactionBrick = document.querySelector('.max-income-transaction')
-const minExpenseTransactionBrick = document.querySelector('.min-expense-transaction')
-const minIncomeTransactionBrick = document.querySelector('.min-income-transaction')
+const averageExpenses = document.querySelector('.average-expenses');
+const averageIncome = document.querySelector('.average-income');
+const maxExpenseTransactionBrick = document.querySelector('.max-expense-transaction');
+const maxIncomeTransactionBrick = document.querySelector('.max-income-transaction');
+const minExpenseTransactionBrick = document.querySelector('.min-expense-transaction');
+const minIncomeTransactionBrick = document.querySelector('.min-income-transaction');
+const creditAmountBrick = document.querySelector('.credit-amount');
 
 let inputArr = [nameInput, amountInput, incomeCategorySelect, extensesCategorySelect]
 let root = document.documentElement;
@@ -47,6 +48,7 @@ let expensesArr = [0];
 let expensesTransactionName = [0]
 let expensesTransactionIcon = [0]
 let categorySelect = categorySelectList[0];
+let creditAmount = 0;
 
 const popupTransactionPanel = () => {
     addTransactionPanel.classList.toggle('popup');
@@ -143,10 +145,10 @@ const createMaxTransaction = (arr, max, name) => {
 
     if (max >= 1) {
         name.innerHTML = `<p class="max-transaction-income transaction-name">${incomeTransactionIcon[indexNumber]}${incomeTransactionName[indexNumber]}</p>
-        <p class="transaction-amount ">${max} zł</p>`
+        <p class="transaction-amount">${max} zł</p>`
     } else {
         name.innerHTML = `<p class="max-transaction-income transaction-name">${expensesTransactionIcon[indexNumber]}${expensesTransactionName[indexNumber]}</p>
-        <p class="transaction-amount neg">${max} zł</p>`
+        <p class="transaction-amount ">${max} zł</p>`
     }
 }
 
@@ -158,16 +160,39 @@ const createMinTransaction = (arr, min, name) => {
         <p class="transaction-amount ">${min} zł</p>`
     } else {
         name.innerHTML = `<p class="min-transaction-income transaction-name">${expensesTransactionIcon[indexNumber]}${expensesTransactionName[indexNumber]}</p>
-        <p class="transaction-amount neg">${min} zł</p>`
+        <p class="transaction-amount ">${min} zł</p>`
     }
 }
 
+const credit = amount => {
+    console.log(amount)
+    if (amount < 0 ){
+        if(creditAmount >= amount ) {
+            creditAmount += amount
+            creditAmountBrick.innerText = `${creditAmount} zł`
+        } else {
+            refoundAmount = amount - creditAmount;
+            creditAmountBrick.innerText = `0 zł`
+            refound(refoundAmount);
+        }
+    } else {
+        creditAmount += amount
+        creditAmountBrick.innerText = `${creditAmount} zł`
+    }
+    
+    console.log(creditAmount)
+}
 
-const createNewTransaction = (amount) => {
+const refound = refoundAmount => {
+    console.log(`funkcja refound -> ${refoundAmount}`)
+}
+
+
+const createNewTransaction = amount => {
     const newTransaction = document.createElement('div');
     newTransaction.classList.add('transaction');
     newTransaction.setAttribute('id', ID);
-    checkCategory(selectedCategory);
+    checkCategory(selectedCategory, amount);
     if (categorySelect !== categorySelectList[0]) {
         amount = amount * -1
         expensesArr.push(amount);
@@ -202,31 +227,39 @@ const selectCategory = () => {
     selectedCategory = categorySelect.options[categorySelect.selectedIndex].text;
 }
 
-const checkCategory = (trasaction) => {
+const checkCategory = (trasaction, amount) => {
     switch (trasaction) {
         case 'Wypłata':
-            categoryIcon = '<i class="fas fa-money-bill-wave"></i>'
+            categoryIcon = '<i class="fas fa-money-bill-wave pos"></i>'
             break;
         case 'Kredyt':
-            categoryIcon = '<i class="far fa-credit-card"></i>';
+            categoryIcon = '<i class="far fa-credit-card pos"></i>';
+            credit(amount);
             break;
         case 'Nagroda Nobla':
-            categoryIcon = '<i class="fas fa-award"></i>';
+            categoryIcon = '<i class="fas fa-award pos"></i>';
             break;
         case 'Sprzedaż butelek':
-            categoryIcon = '<i class="fas fa-wine-bottle"></i>';
+            categoryIcon = '<i class="fas fa-wine-bottle pos"></i>';
             break;
         case 'Jedzenie':
-            categoryIcon = '<i class="fas fa-pizza-slice"></i>';
+            categoryIcon = '<i class="fas fa-pizza-slice neg"></i>';
             break;
         case 'Rachunki':
-            categoryIcon = '<i class="fas fa-file-invoice-dollar"></i>';
+            categoryIcon = '<i class="fas fa-file-invoice-dollar neg"></i>';
             break;
         case 'Czynsz':
-            categoryIcon = '<i class="fas fa-truck-moving"></i>';
+            categoryIcon = '<i class="fas fa-truck-moving neg"></i>';
             break;
         case 'Ubrania':
-            categoryIcon = '<i class="fas fa-tshirt"></i>';
+            categoryIcon = '<i class="fas fa-tshirt neg"></i>';
+            break;
+        case 'Spłata kredytu':
+            categoryIcon = '<i class="fas fa-money-check-alt neg"></i>';
+            credit(amount * -1);
+            break;
+        default:
+            categoryIcon = '<i class="far fa-frown-open"></i>';
             break;
     }
 }
@@ -243,7 +276,7 @@ const deleteTransaction = id => {
         averageCounter(expensesArr, averageExpenses);
         maxTransaction(expensesArr, maxExpenseTransactionBrick);
         minTransaction(expensesArr, minExpenseTransactionBrick);
-
+        credit(transactionAmount);
     } else {
         const indexOfIncome = incomeArr.indexOf(transactionAmount);
         incomeArr.splice(indexOfIncome, 1);
@@ -252,6 +285,7 @@ const deleteTransaction = id => {
         averageCounter(incomeArr, averageIncome);
         maxTransaction(incomeArr, maxIncomeTransactionBrick);
         minTransaction(incomeArr, minIncomeTransactionBrick);
+        credit(transactionAmount * -1);
     }
 
     const indexOfTransaction = moneyArr.indexOf(transactionAmount);
@@ -265,6 +299,8 @@ const deleteAllTransaction = () => {
     availableMoney.textContent = '0 zł'
     averageExpenses.textContent = '0 zł'
     averageIncome.textContent = '0 zł'
+    creditAmountBrick.innerText = `0 zł`
+    creditAmount = 0;
     incomeArr = [0];
     expensesArr = [0];
     moneyArr = [0];
@@ -338,10 +374,9 @@ const changeStyleToDark = () => {
 }
 
 function maxLengthCheck(object) {
-    console.log(object)
     if (object.value.length > object.max.length)
-      object.value = object.value.slice(0, object.max.length)
-  }
+        object.value = object.value.slice(0, object.max.length)
+}
 
 
 addTransactionBtn.addEventListener('click', popupTransactionPanel);
