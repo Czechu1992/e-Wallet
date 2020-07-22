@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="info-brick-area credit">
-                            <h3 >Kredyt</h3>
+                            <h3>Kredyty i zobowiązania</h3>
                             <div class="info-brick-text average">
                                 <p class="credit-amount"> 0 zł</p>
                             </div>
@@ -129,13 +129,13 @@
                                     <p class="transaction-amount">2000zł</p>
                                 </div>
                             </div> -->
-                            
+
                         </div>
                         <div class="add-transaction-panel">
                             <h2 class="title">Dodaj nową transakcję</h2>
                             <label for="name">Nazwa</label>
                             <small>(podaj nazwę transakcji)</small>
-                            <input type="text" maxlength="30"id="name">
+                            <input type="text" maxlength="30" id="name">
 
                             <div class="transaction-type">
                                 <input class="radio" type="radio" id="radio-income" name="transaction-type-radio"
@@ -161,7 +161,7 @@
                                 <option value="nobel">Nagroda Nobla</option>
                                 <option value="bottle">Sprzedaż butelek</option>
                             </select>
-                            <select id="extenses-category" class="category-select hide" onchange="selectCategory()">
+                            <select id="expenses-category" class="category-select hide" onchange="selectCategory()">
                                 <option value="none" selected disabled>- Wydatki -</option>
                                 <option value="food">Jedzenie</option>
                                 <option value="bills">Rachunki</option>
@@ -172,13 +172,34 @@
 
                             <div class="panel-buttons">
                                 <button class="save"><i class="fas fa-save"></i> Zapisz</button>
+                                <button class="edit-button"><i class="fas far fa-edit"></i> Edytuj</button>
                                 <button class="cancel"><i class="far fa-window-close"></i> Anuluj</button>
+                            </div>
+
+                            <div class="alert1 alert">
+                                <strong>Nie masz wystarczająco środków do zrealizowania tej transakcji</strong>
+                                <p>Czy chcesz wziąć kredyt?</p>
+                                <div class="credit-buttons">
+                                    <button class="accept-credit">Tak</button>
+                                    <button class="reject-credit">Nie</button>
+                                </div>
+                            </div>
+                            <div class="alert2 alert">
+                                <strong>Nie mozna zrealizować tej transakcji</strong>
+                                <p>Brak dostępnych środków na koncie</p>
+                                <div class="credit-buttons">
+                                    <button class="Ok-alert-Btn">Ok</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-            </section>
-        </main>
+
+
+                </div>
+    </div>
+    </section>
+    </main>
     </div>
 
 

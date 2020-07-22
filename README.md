@@ -8,7 +8,9 @@ Podstawowe funkcje aplikacji:
 - Obliczanie średnich wydatków i przychodów
 - Wyświetlanie największego i najmniejszego przychodu
 - Wyświetlanie największego i najmniejszego wydatku
-- Wkrótce wyświetlanie zadłużenia - kredytu
+- Możliwosć wzięcia sybkiej pożyczki lub kredytu przy braku środków na koncie
+- Wyświetlanie zadłużenia - kredytu
+- Możliwosć edycji transakcji
 
 Dodatkowe funkcję:
 - Możliwość wybrania stylu light/Dark

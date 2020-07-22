@@ -8,8 +8,8 @@
     --first-color: #f9f9f9;
     --second-color: #14161f;
     --border-color: rgba(0, 0, 0, .2);
-    --bgc-radio1:rgb(221, 255, 221);
-    --bgc-radio2:rgb(255, 221, 221);
+    --bgc-radio1: rgb(221, 255, 221);
+    --bgc-radio2: rgb(255, 221, 221);
 }
 
 body {
@@ -26,7 +26,7 @@ body {
 
 .error {
     border: 1px solid rgb(0, 137, 250);
-    background-color: rgba(0, 137, 250,.1);
+    background-color: rgba(0, 137, 250, .1);
 }
 
 /* HEADER *****************************************************************************/
@@ -43,7 +43,7 @@ header {
 
 header .logo {
     align-self: flex-start;
-    margin:10px 20px;
+    margin: 10px 20px;
 }
 
 header h1 {
@@ -136,7 +136,7 @@ header .control-panel {
     height: 26px;
 }
 
-.delete-all{
+.delete-all {
     margin-bottom: 5px;
 }
 
@@ -190,7 +190,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    
+
 }
 
 h2.title {
@@ -250,19 +250,19 @@ section.transactions {
     margin-right: 10px;
 }
 
-.delete {
+.edit {
     margin-left: 10px;
     background: none;
     border: none;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--second-color);
     cursor: pointer;
     transition: transform .3s, color .3s;
 }
 
-.delete:hover {
+.edit:hover {
     transform: scale(.8);
-    color: rgb(226, 34, 34);
+    /* color: rgb(24, 131, 20); */
 }
 
 /* ADITIONAL INFO, Info Bricks ******************************************************************** */
@@ -291,8 +291,8 @@ section.additional-info {
 }
 
 .credit {
-width: 65%;
-border-radius: 5px;
+    width: 65%;
+    border-radius: 5px;
 }
 
 .info-brick-area h3 {
@@ -325,6 +325,7 @@ border-radius: 5px;
 
 .add-transaction-panel {
     display: none;
+    position: relative;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -343,7 +344,7 @@ border-radius: 5px;
     opacity: 0;
     position: fixed;
     width: 0;
-    
+
 }
 
 .transaction-type label {
@@ -354,6 +355,7 @@ border-radius: 5px;
     font-family: sans-serif, Arial;
     border: 2px solid var(--border-color);
     border-radius: 4px;
+    transition: background-color .3s, border-color .3s;
     cursor: pointer;
 }
 
@@ -395,9 +397,7 @@ border-radius: 5px;
     display: flex;
 }
 
-.show {
-    display: block;
-}
+
 
 .hide {
     display: none;
@@ -415,7 +415,8 @@ border-radius: 5px;
     font-size: 22px;
 }
 
-#label-expenses, #label-income {
+#label-expenses,
+#label-income {
     font-size: 20px;
 }
 
@@ -468,6 +469,7 @@ border-radius: 5px;
 }
 
 .panel-buttons .save {
+
     color: var(--first-color);
     background-color: var(--second-color);
     transition: color .3s, background-color .3s;
@@ -478,4 +480,94 @@ border-radius: 5px;
     background-color: var(--first-color);
 }
 
+.panel-buttons .edit-button {
+    display: none;
+    color: var(--first-color);
+    background-color: var(--second-color);
+    transition: color .3s, background-color .3s;
+}
 
+.panel-buttons .edit-button:hover {
+    color: var(--second-color);
+    background-color: var(--first-color);
+}
+
+
+
+/* ALERT *********************** */
+
+.alert {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+} */
+
+.alert p {
+    margin-top: 15px;
+
+}
+
+.credit-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.credit-buttons button {
+    margin: 15px 20px 10px 20px;
+    padding: 10px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #14161f;
+    background-color: #f9f9f9;
+    border: 1px solid #14161f;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: color .3s, border .3s, background-color .3s;
+}
+
+.credit-buttons button:hover {
+    background-color: #14161f;
+    border: 1px solid #f9f9f9;
+    color: #f9f9f9;
+}
+
+.alert .aler1 {
+    display: none;
+}
+
+.alert2 {
+    top: 20px;
+    left: 40px;
+    min-width: 400px;
+}
+
+.show {
+    display: block;
+}
+
+.show2 {
+    display: block !important;
+}
